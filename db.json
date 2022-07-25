@@ -1,0 +1,32 @@
+{
+  "producList": [
+    {
+      "productName": "iphone 14 pro max",
+      "category": "Technology",
+      "freshness": "band new",
+      "date": "2022-07-25T17:00:00.000Z",
+      "price": 100000,
+      "comment": "new 100%, but not cheap ",
+      "id": 1
+    },
+    {
+      "productName": "banana 🍌 ",
+      "category": "Fruit",
+      "freshness": "band new",
+      "date": "2022-07-25T17:00:00.000Z",
+      "price": 2,
+      "comment": "ngon lam",
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
