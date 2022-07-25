@@ -51,8 +51,15 @@ export class BodyComponent implements OnInit {
     }
   }
 
-
-
+  openDialog() {
+    this.dialog.open(DialogComponent, {
+      width: '35%'
+    }).afterClosed().subscribe(val => {
+      if(val === 'save'){
+        this.getAllProduct()
+      }
+    })
+  }
   // hàm sửa
   editProduct(row: any){
     this.dialog.open(DialogComponent, {

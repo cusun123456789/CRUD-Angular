@@ -18,11 +18,7 @@ export class NavBarComponent implements OnInit {
     this.dialog.open(DialogComponent, {
       width: '35%'
     })
-    // .afterClosed().subscribe(val => {
-    //   if(val === 'save'){
-    //     this.getAllProduct()
-    //   }
-    // })
+
   }
 
 

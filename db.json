@@ -17,13 +17,56 @@
       "price": 2,
       "comment": "ngon lam",
       "id": 2
+    },
+    {
+      "productName": "guchi",
+      "category": "Clothes",
+      "freshness": "band new",
+      "date": "2022-07-11T17:00:00.000Z",
+      "price": 300,
+      "comment": "xau vl",
+      "id": 3
+    },
+    {
+      "productName": "Tesla (づ￣ 3￣)づ",
+      "category": "Car",
+      "freshness": "band new",
+      "date": "2022-07-25T17:00:00.000Z",
+      "price": 4444440,
+      "comment": "dua xe ko em ",
+      "id": 4
     }
   ],
-  "comments": [
+  "signupUsers": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "userName": "quyet",
+      "password": "1234567",
+      "repeatedPassword": "1234567",
+      "birthDate": "2022-07-21T17:00:00.000Z",
+      "gender": "male",
+      "phoneNumber": "0352323054",
+      "email": "quyet@gmail.com",
+      "id": 1
+    },
+    {
+      "userName": "linh",
+      "password": "111111",
+      "repeatedPassword": "111111",
+      "birthDate": "2022-07-18T17:00:00.000Z",
+      "gender": "male",
+      "phoneNumber": "0352323055",
+      "email": "linh@gmail.com",
+      "id": 2
+    },
+    {
+      "userName": "",
+      "password": "",
+      "repeatedPassword": "",
+      "birthDate": "",
+      "gender": "",
+      "phoneNumber": "",
+      "email": "",
+      "id": 3
     }
   ],
   "profile": {

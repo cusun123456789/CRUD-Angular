@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NotifierService } from 'src/app/services/notifier.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +11,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  public loginForm!: FormGroup;
+
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router , private notifier: NotifierService) { }
 
   ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      userName: ['', Validators.required],
+      password: ['', Validators.required],
+    })
   }
 
+  login(){
+    this.http.get<any>("http://localhost:3000/signupUsers")
+    .subscribe({
+      next: (res) =>{
+        const user = res.find((a : any) => {
+          return a.userName === this.loginForm.value.userName && a.password === this.loginForm.value.password
+        });
+        if (user) {
+          this.notifier.showSnackBar('login success', 'oke', 'success')
+          this.loginForm.reset();
+          this.router.navigate(['body'])
+        }else{
+          this.notifier.showSnackBar('user not found', 'oke', 'error')
+        }
+      },
+      error: () => {
+        // alert("There was an error")
+        this.notifier.showSnackBar('There was an error', 'oke', 'error')
+      }
+    })
+  }
+  hide = true;
 }

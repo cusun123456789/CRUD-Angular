@@ -32,7 +32,7 @@ export class DialogComponent implements OnInit {
       freshness: ['', Validators.required],
       date: ['', Validators.required],
       price: ['', Validators.required],
-      comment: ['', Validators.required],
+      comment: ['', [Validators.required]],
     });
     // console.log(this.editData);
 

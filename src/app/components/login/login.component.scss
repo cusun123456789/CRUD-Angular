@@ -1,0 +1,68 @@
+// :host {
+//   display: flex;
+//   justify-content: center;
+//   margin: 100px 0px;
+// }
+
+// .mat-form-field {
+//   width: 100%;
+//   min-width: 300px;
+// }
+
+// mat-card-title,
+// mat-card-content {
+//   display: flex;
+//   justify-content: center;
+// }
+
+// .error {
+//   padding: 16px;
+//   width: 300px;
+//   color: white;
+//   background-color: red;
+// }
+
+// .button {
+//   display: flex;
+//   justify-content: flex-end;
+// }
+body {
+  background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
+  background-image: url(https://w.wallhaven.cc/full/z8/wallhaven-z8wj6y.png);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+
+.btn-google {
+  color: white !important;
+  background-color: #ea4335;
+}
+
+.btn-facebook {
+  color: white !important;
+  background-color: #3b5998;
+  font-weight: 400 !important;
+}
+a{
+  color: black !important;
+  text-decoration: none;
+}
+:host .mat-form-field{
+  width: 100%;
+  padding: 0px;
+  padding-bottom: 0em !important;
+}
+.example-radio-button {
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 0px;
+}
+
