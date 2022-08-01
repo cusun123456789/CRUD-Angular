@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit,} from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotifierService } from 'src/app/services/notifier.service';
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-login',
@@ -11,37 +12,62 @@ import { NotifierService } from 'src/app/services/notifier.service';
 })
 export class LoginComponent implements OnInit {
 
-  public loginForm!: FormGroup;
+  loginForm: FormGroup = new FormGroup({
+    userName: new FormControl(''),
+    password: new FormControl(''),
+  });
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router , private notifier: NotifierService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private router: Router,
+    private notifier: NotifierService,
+    private api: ApiService,
+  ) { }
 
   ngOnInit(): void {
+
+
     this.loginForm = this.formBuilder.group({
-      userName: ['', Validators.required],
-      password: ['', Validators.required],
+      userName: ['',
+        [ Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30)
+        ]],
+      password: ['',
+        [ Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(30)
+        ]],
     })
+  }
+  get userName() {
+    return this.loginForm.get('userName')
+  }
+  get password() {
+    return this.loginForm.get('password')
   }
 
   login(){
-    this.http.get<any>("http://localhost:3000/signupUsers")
+    this.api.getUser()
     .subscribe({
       next: (res) =>{
         const user = res.find((a : any) => {
           return a.userName === this.loginForm.value.userName && a.password === this.loginForm.value.password
         });
         if (user) {
-          this.notifier.showSnackBar('login success', 'oke', 'success')
+          localStorage.setItem('token', 'daylatokennhungkolaydc');
+          this.loginForm.value.userName == 'quyet' ? localStorage.setItem('UserType','Admin' ) : localStorage.setItem('UserType','empjloye')
+          this.notifier.showSnackBar('login success', 'oke', 'success');
           this.loginForm.reset();
           this.router.navigate(['body'])
         }else{
-          this.notifier.showSnackBar('user not found', 'oke', 'error')
+          this.notifier.showSnackBar('wrong account and password', 'oke', 'error')
         }
       },
       error: () => {
-        // alert("There was an error")
         this.notifier.showSnackBar('There was an error', 'oke', 'error')
       }
     })
   }
-  hide = true;
 }

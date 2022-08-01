@@ -1,12 +1,11 @@
-<section class="vh-100 gradient-custom">
+<section class="vh-100 background-custom">
   <div class="container py-5 h-100">
     <div class="row justify-content-center align-items-center h-100">
       <div class="col-12 col-lg-9 col-xl-7">
-        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+        <div class="card shadow-2-strong card-registration">
           <div class="card-body p-4 p-md-5">
-            <h1 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h1>
-
-
+            <h1>Registration Form</h1>
+            <h4>Fill in the information to register</h4><hr><br>
 
             <form [formGroup]="signupForm">
               <div class="row">
@@ -25,7 +24,6 @@
                     <mat-label>Enter your email</mat-label>
                     <input matInput placeholder="pat@example.com" formControlName="email">
                   </mat-form-field><br>
-                  <!-- <span class="invalid" *ngIf="email && email.invalid && email.touched">error</span> -->
                 </div>
               </div>
 
@@ -34,25 +32,18 @@
                 <div class="col-md-6 mb-4 d-flex align-items-center">
                   <mat-form-field appearance="outline">
                     <mat-label>Enter your password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                      [attr.aria-pressed]="hide">
-                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                  </mat-form-field><br>
-                  <!-- <span class="invalid" *ngIf="password && password.invalid && password.touched">error</span> -->
+                    <input matInput type="password" formControlName="password">
+                  </mat-form-field><br >
                 </div>
                 <!-- giới tính ở đây  -->
                 <div class="col-md-6 mb-4 ">
-                  <h4 class="mb-2 pb-1">Gender </h4>
+                  <h3 class="mb-2 pb-1">Gender </h3>
                   <mat-radio-group class="example-radio-group" formControlName="gender">
                     <mat-radio-button class="example-radio-button" *ngFor="let gender of genderList" [value]="gender">
                       {{gender}}
                     </mat-radio-button>
                     <!-- <mat-hint class="invalid" *ngIf="freshness && freshness.invalid && freshness.touched">something wrong</mat-hint> -->
                   </mat-radio-group>
-
-
                 </div>
               </div>
 
@@ -62,11 +53,7 @@
                 <div class="col-md-6 mb-4 pb-2">
                   <mat-form-field appearance="outline">
                     <mat-label>re-enter password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="repeatedPassword">
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                      [attr.aria-pressed]="hide">
-                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
+                    <input matInput type="password" formControlName="repeatedPassword">
                   </mat-form-field><br>
                   <!-- <span class="invalid" *ngIf="password && password.invalid && password.touched">error</span> -->
                 </div>
@@ -90,18 +77,18 @@
                   </mat-form-field>
                 </div>
                 <div class="col-md-6 mb-4">
-                  <h2 routerLink="/login">have account? login here</h2>
+                  <h4 routerLink="/login">have account? login here</h4>
                 </div>
               </div>
 
               <!-- button -->
               <div class="row">
-                <div mat-dialog-actions [align]="'center'">
-                  <button mat-raised-button color="primary" (click)="singUp()"> Sing Up</button>
+                <div  fxLayout="row" fxLayoutAlign="space-around stretch" >
+                  <button class="button-spacer" mat-raised-button color="primary" (click)="singUp()"> Sing Up</button>
 
-                  <button mat-raised-button color="warn" mat-dialog-close routerLink="/body"> Back</button>
+                  <button class="button-warn" mat-raised-button color="warn" routerLink="/body"> Back</button>
                 </div>
-              </div>
+              </div><br><hr>
             </form>
           </div>
         </div>

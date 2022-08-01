@@ -4,3 +4,20 @@
 .padding-buton {
   margin: 0 10px;
 }
+.fixed {
+z-index: 3;
+position: fixed;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 16%;
+}

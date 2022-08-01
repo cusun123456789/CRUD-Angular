@@ -12,10 +12,11 @@
     <mat-form-field appearance="outline">
       <mat-label>Category Product</mat-label>
       <mat-select formControlName="category">
-        <mat-option value="Fruit">Fruit</mat-option>
-        <mat-option value="Technology">Technology</mat-option>
-        <mat-option value="Clothes">Clothes</mat-option>
-        <mat-option value="Car">Car</mat-option>
+        <mat-option value="pc">Pc</mat-option>
+        <mat-option value="lap top">lap top</mat-option>
+        <mat-option value="head phone">head phone</mat-option>
+        <mat-option value="mouse">mouse</mat-option>
+        <mat-option value="keyboar">keyboar</mat-option>
       </mat-select>
       <mat-hint class="invalid" *ngIf="category && category.invalid && category.touched">something wrong</mat-hint>
     </mat-form-field><br><br>
@@ -28,25 +29,34 @@
       <mat-hint class="invalid" *ngIf="date && date.invalid && date.touched">something wrong</mat-hint>
     </mat-form-field><br><br>
 
-      <h1>Product freshness</h1>
+    <h1>Product Status</h1>
 
-    <mat-radio-group class="example-radio-group" formControlName="freshness">
-      <mat-radio-button class="example-radio-button" *ngFor="let fresh of freshnessList" [value]="fresh">
-        {{fresh}}
-      </mat-radio-button>
-      <mat-hint class="invalid" *ngIf="freshness && freshness.invalid && freshness.touched">something wrong</mat-hint>
-    </mat-radio-group>
+    <mat-form-field appearance="outline" >
+      <mat-label>Product Status</mat-label>
+      <mat-select formControlName="freshness" >
+        <mat-option value="using" (click)="using()" >using</mat-option>
+        <mat-option value="no using" (click)="noUsing()" >no using</mat-option>
+      </mat-select>
+    </mat-form-field><br>
+    <mat-form-field *ngIf="isclick" appearance="outline">
+      <mat-label>Name user</mat-label>
+      <input matInput formControlName="nameUser" >
+    </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>price</mat-label>
-      <input matInput type="number" formControlName="price">
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="price">
       <mat-hint class="invalid" *ngIf="price && price.invalid && price.touched">something wrong</mat-hint>
-    </mat-form-field><br><br>
+    </mat-form-field><br><mat-form-field appearance="outline">
+      <mat-label>IMG URL</mat-label>
+      <input matInput formControlName="img">
+
+    </mat-form-field><br>
     <mat-form-field appearance="outline">
       <mat-label>commented</mat-label>
       <textarea matInput type="text" formControlName="comment"></textarea>
       <mat-hint class="invalid" *ngIf="comment && comment.invalid && comment.touched">something wrong</mat-hint>
-    </mat-form-field><br><br>
+    </mat-form-field><br>
   </form>
 </div>
 

@@ -1,13 +1,49 @@
 table {
   width: 100%;
+  height: 100%;
 }
 
 .mat-form-field {
-  font-size: 14px;
   width: 100%;
+margin-top: 30px
 }
 
-.container{
-  max-width: 80%;
-  margin-top: 20px;
+td, th {
+  width: 10%;
+}
+.sidenav{
+  max-width: 150px;
+}
+.button-group{
+  width: 90%;
+  margin-bottom: 8px;
+  margin-left: 8px;
+}
+.mat-sidenav {
+  border: none;
+}
+.container-table{
+  margin-top: 60px;
+  margin-bottom: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.toolbar{
+  z-index: 3;
+  position: fixed;
+}
+.mat-sidenav{
+background-color: #f7faf8;
+}
+.mat-icon{
+  float: left;
+  margin-top: 6px;
+  margin-left: -6px;
+
+}
+.buton{
+  text-align: start;
+}
+.mat-tab-group{
+  margin-top:24px;
 }

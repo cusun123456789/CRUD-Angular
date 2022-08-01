@@ -29,7 +29,15 @@ import { BodyComponent } from './components/body/body.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatListModule } from '@angular/material/list';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { DetailPageProductComponent } from './components/detail-page-product/detail-page-product.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -40,8 +48,8 @@ import {MatCardModule} from '@angular/material/card';
     BodyComponent,
     LoginComponent,
     SingupComponent,
-
-
+    PageNotFoundComponent,
+    DetailPageProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,8 +73,13 @@ import {MatCardModule} from '@angular/material/card';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCardModule
-
+    MatCardModule,
+    MatSidenavModule,
+    MatButtonToggleModule,
+    MatSlideToggleModule,
+    MatListModule,
+    FlexLayoutModule,
+    MatTabsModule,
 
   ],
   providers: [],

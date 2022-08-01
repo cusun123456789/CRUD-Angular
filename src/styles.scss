@@ -1,3 +1,40 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+// chế độ sáng
+$crudApp-primary: mat.define-palette(mat.$light-blue-palette);
+$crudApp-accent: mat.define-palette(mat.$pink-palette);
+$crudApp-warn: mat.define-palette(mat.$red-palette);
+
+$crudApp-theme-light: mat.define-light-theme((
+  color: (
+    primary: $crudApp-primary,
+    accent: $crudApp-accent,
+    warn: $crudApp-warn,
+  )
+));
+// chế độ tối
+$crudApp-primary-dark: mat.define-palette(mat.$blue-gray-palette);
+$crudApp-accent-dark: mat.define-palette(mat.$pink-palette);
+$crudApp-warn-dark: mat.define-palette(mat.$deep-orange-palette);
+
+$crudApp-theme-dark: mat.define-dark-theme((
+  color: (
+    primary: $crudApp-primary-dark,
+    accent: $crudApp-accent-dark,
+    warn: $crudApp-warn-dark,
+  )
+));
+
+
+@include mat.all-component-themes($crudApp-theme-light);
+
+.dark-theme-mode{
+  @include mat.all-component-themes($crudApp-theme-dark)
+}
+
+
+
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }

@@ -1,65 +1,109 @@
-
-<app-nav-bar></app-nav-bar>
-<div class="container">
-  <mat-form-field appearance="outline" >
-    <mat-label > <mat-icon>search</mat-icon>Search </mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="QuyetDz" #input>
-  </mat-form-field>
-  <button class="padding-buton " mat-raised-button color="warn" (click)="openDialog()">Add product</button>
-
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort>
-      <!-- productName Column -->
-      <ng-container matColumnDef="productName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> productName </th>
-        <td mat-cell *matCellDef="let row"> {{row.productName}} </td>
-      </ng-container>
-
-      <!-- category Column -->
-      <ng-container matColumnDef="category">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> category </th>
-        <td mat-cell *matCellDef="let row"> {{row.category}} </td>
-      </ng-container>
-
-      <!-- freshness Column -->
-      <ng-container matColumnDef="freshness">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> freshness </th>
-        <td mat-cell *matCellDef="let row"> {{row.freshness}} </td>
-      </ng-container>
-
-      <!-- date Column -->
-      <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> date </th>
-        <td mat-cell *matCellDef="let row"> {{row.date | date:"dd/MM/yy"}} </td>
-      </ng-container>
-      <!-- price Column -->
-      <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> price </th>
-        <td mat-cell *matCellDef="let row"> {{row.price | currency}} </td>
-      </ng-container>
-      <!-- comment Column -->
-      <ng-container matColumnDef="comment">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> comment </th>
-        <td mat-cell *matCellDef="let row"> {{row.comment  }} </td>
-      </ng-container>
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> action </th>
-        <td mat-cell *matCellDef="let row">
-
-        <button mat-icon-button (click)="editProduct(row)"> <mat-icon color="primary">edit</mat-icon></button>
-        <button mat-icon-button (click)="deleteProduct(row.id)"> <mat-icon color="warn">delete</mat-icon></button>
-
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-      <!-- Row shown when there is no matching data. -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-      </tr>
-    </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-  </div>
-</div>
+<!-- slide ben trai-->
+<mat-sidenav-container>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <button mat-raised-button color="warn" (click)="openDialog()" class="button-group">
+        <mat-icon matSuffix>library_add</mat-icon> Add product
+      </button>
+      <button mat-raised-button color="warn" class="button-group" routerLink="/user">
+        <mat-icon matSuffix>people</mat-icon> show users
+      </button>
+      <button mat-raised-button color="warn" class="button-group" routerLink="/singup">
+        <mat-icon matSuffix>people</mat-icon> Add users
+      </button>
+      <button class="button-group" mat-raised-button color="warn" (click)="logout()">
+        <mat-icon matSuffix>power_settings_new</mat-icon>logOut
+      </button>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="toolbar">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>PRODUCT DASHBOARD</span>
+    </mat-toolbar>
+    <div class="container-table">
+      <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="dashboard">
+          <div>
+            <!-- form search -->
+            <mat-form-field appearance="outline">
+              <mat-icon matSuffix>search</mat-icon>
+              <mat-label>Search </mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="QuyetDz" #input>
+            </mat-form-field>
+            <div class="mat-elevation-z7">
+              <table mat-table [dataSource]="dataSource" matSort>
+                <!-- productName Column -->
+                <ng-container matColumnDef="Product Name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> productName </th>
+                  <td mat-cell *matCellDef="let row"> {{row.productName}} </td>
+                </ng-container>
+                <!-- category Column -->
+                <ng-container matColumnDef="Category">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> category </th>
+                  <td mat-cell *matCellDef="let row"> {{row.category}} </td>
+                </ng-container>
+                <!-- freshness Column -->
+                <ng-container matColumnDef="Freshness">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> status </th>
+                  <td mat-cell *matCellDef="let row"> {{row.freshness}} </td>
+                </ng-container>
+                <!-- date Column -->
+                <ng-container matColumnDef="Date">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> date </th>
+                  <td mat-cell *matCellDef="let row"> {{row.date | date:"dd/MM/yy"}} </td>
+                </ng-container>
+                <!-- name user-->
+                <ng-container matColumnDef="name User">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> name user </th>
+                  <td mat-cell *matCellDef="let row"> {{row.nameUser}} </td>
+                </ng-container>
+                <!-- price Column -->
+                <ng-container matColumnDef="Price">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
+                  <td mat-cell *matCellDef="let row"> {{row.price }} </td>
+                </ng-container>
+                <!-- comment Column -->
+                <ng-container matColumnDef="Comment">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> comment </th>
+                  <td mat-cell *matCellDef="let row"> {{row.comment}} </td>
+                </ng-container>
+                <!-- button column -->
+                <ng-container matColumnDef="Edit">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> action </th>
+                  <td mat-cell *matCellDef="let row">
+                    <button mat-icon-button (click)="editProduct(row)">
+                      <mat-icon color="primary">edit</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="deleteProduct(row.id)">
+                      <mat-icon color="warn">delete</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                </tr>
+              </table>
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                aria-label="Select page of periodic elements">
+              </mat-paginator>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Detail">
+          <div>
+            <app-detail-page-product></app-detail-page-product>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
