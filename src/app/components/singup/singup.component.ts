@@ -41,7 +41,7 @@ export class SingupComponent implements OnInit {
         Validators.maxLength(30)
       ],
       birthDate: ['', Validators.required],
-      gender: ['', Validators.required],
+      gender: ['male', Validators.required],
       phoneNumber: ['', Validators.required, ],
       email: ['', Validators.required, Validators.email],
     });

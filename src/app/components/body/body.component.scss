@@ -4,8 +4,9 @@ table {
 }
 
 .mat-form-field {
-  width: 100%;
-margin-top: 30px
+  width: 90%;
+  margin-top: 30px;
+  margin-right:1%;
 }
 
 td, th {
@@ -46,4 +47,7 @@ background-color: #f7faf8;
 }
 .mat-tab-group{
   margin-top:24px;
+}
+.example-spacer {
+  flex: 1 1 auto;
 }

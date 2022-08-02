@@ -4,27 +4,31 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
-      <button mat-raised-button color="warn" (click)="openDialog()" class="button-group">
-        <mat-icon matSuffix>library_add</mat-icon> Add product
-      </button>
       <button mat-raised-button color="warn" class="button-group" routerLink="/user">
         <mat-icon matSuffix>people</mat-icon> show users
       </button>
       <button mat-raised-button color="warn" class="button-group" routerLink="/singup">
         <mat-icon matSuffix>people</mat-icon> Add users
       </button>
-      <button class="button-group" mat-raised-button color="warn" (click)="logout()">
+      <button  (click)="drawer.toggle()"
+      *ngIf="isHandset$ | async" mat-raised-button color="warn" class="button-group" (click)="logout()">
         <mat-icon matSuffix>power_settings_new</mat-icon>logOut
       </button>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary" class="toolbar">
+    <mat-toolbar color="primary" class="toolbar " >
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
+      <img src="image/x-icon" alt="">
       <span>PRODUCT DASHBOARD</span>
+
+      <button  style="margin-left: 65%;" mat-raised-button color="warn" (click)="logout()">
+        <mat-icon matSuffix>power_settings_new</mat-icon>logOut
+      </button>
+
     </mat-toolbar>
     <div class="container-table">
       <mat-tab-group mat-align-tabs="center">
@@ -36,6 +40,9 @@
               <mat-label>Search </mat-label>
               <input matInput (keyup)="applyFilter($event)" placeholder="QuyetDz" #input>
             </mat-form-field>
+            <button mat-raised-button color="primary" (click)="openDialog()">
+              <mat-icon matSuffix>library_add</mat-icon> Add product
+            </button>
             <div class="mat-elevation-z7">
               <table mat-table [dataSource]="dataSource" matSort>
                 <!-- productName Column -->
